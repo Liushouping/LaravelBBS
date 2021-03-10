@@ -55,8 +55,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'captcha' => ['required', 'captcha'],
         ], [
-            'captcha.required' => '驗證碼不能為空',
-            'captcha.captcha' => '請輸入正確的驗證碼',
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '请输入正确的验证码',
         ]);
     }
 
