@@ -32,8 +32,8 @@ class TopicRequest extends Request
     public function messages()
     {
         return [
-            'title.min' => '标题必须至少两个字符',
-            'body.min' => '文章内容必须至少三个字符',
+            'title.min' => '標題必須至少两個字符',
+            'body.min' => '文章内容必須至少三個字符',
         ];
     }
 }

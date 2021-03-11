@@ -33,7 +33,7 @@
             </a>
             <span> • </span>
             <i class="far fa-clock"></i>
-            <span class="timeago" title="最后活跃于：{{ $topic->updated_at }}">{{ $topic->updated_at->diffForHumans() }}</span>
+            <span class="timeago" title="最後活跃于：{{ $topic->updated_at }}">{{ $topic->updated_at->diffForHumans() }}</span>
           </small>
 
         </div>
@@ -47,5 +47,5 @@
   </ul>
 
 @else
-  <div class="empty-block">暂无数据 ~_~ </div>
+  <div class="empty-block">目前沒有數據 ~_~ </div>
 @endif

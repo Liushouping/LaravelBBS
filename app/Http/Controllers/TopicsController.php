@@ -26,14 +26,14 @@ class TopicsController extends Controller
 	public function index(Request $request, Topic $topic)
     {    
         $topics = $topic->withOrder($request->order)
-                        ->with('user', 'category')  // 预加载防止 N+1 问题
+                        ->with('user', 'category')  // 預加载防止 N+1 问题
                         ->paginate(20);
         return view('topics.index', compact('topics'));
     }
 
     public function show(Request $request, Topic $topic)
     {
-        // URL 矫正
+        // URL 矯正
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }
@@ -53,7 +53,7 @@ class TopicsController extends Controller
         $topic->user_id = Auth::id();
         $topic->save();
 
-        return redirect()->to($topic->link())->with('success', '成功创建话题！');
+        return redirect()->to($topic->link())->with('success', '成功創建話題！');
     }
 
 	public function edit(Topic $topic)
@@ -76,25 +76,25 @@ class TopicsController extends Controller
         $this->authorize('destroy', $topic);
         $topic->delete();
 
-        return redirect()->route('topics.index')->with('success', '成功删除！');
+        return redirect()->route('topics.index')->with('success', '成功刪除！');
     }
 
 	public function uploadImage(Request $request, ImageUploadHandler $uploader)
     {
-        // 初始化返回数据，默认是失败的
+        // 初始化返回數據，默認是失敗的
         $data = [
             'success'   => false,
-            'msg'       => '上传失败!',
+            'msg'       => '上傳失敗!',
             'file_path' => ''
         ];
-        // 判断是否有上传文件，并赋值给 $file
+        // 判斷是否有上傳文件，並賦值给 $file
         if ($file = $request->upload_file) {
-            // 保存图片到本地
+            // 儲存圖片到本地
             $result = $uploader->save($file, 'topics', \Auth::id(), 1024);
-            // 图片保存成功的话
+            // 圖片儲存成功的話
             if ($result) {
                 $data['file_path'] = $result['path'];
-                $data['msg']       = "上传成功!";
+                $data['msg']       = "上傳成功!";
                 $data['success']   = true;
             }
         }

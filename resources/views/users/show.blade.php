@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $user->name . ' 的个人中心')
+@section('title', $user->name . ' 的個人中心')
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <div class="card ">
       <img class="card-img-top" src="{{ $user->avatar }}" alt="{{ $user->name }}">
       <div class="card-body">
-        <h5><strong>个人简介</strong></h5>
+        <h5><strong>個人簡介</strong></h5>
         <p>{{ $user->introduction }}</p>
         
         <hr>
@@ -27,12 +27,12 @@
     </div>
     <hr>
 
-    {{-- 用户发布的内容 --}}
+    {{-- 用户發佈的内容 --}}
     <div class="card">
       <div class="card-body">
         <ul class="nav nav-tabs">
-          <li class="nav-item"><a class="nav-link active bg-transparent" href="#">Ta 的话题</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Ta 的回复</a></li>
+          <li class="nav-item"><a class="nav-link active bg-transparent" href="#">Ta 的話題</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ta 的回覆</a></li>
         </ul>
         @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
       </div>

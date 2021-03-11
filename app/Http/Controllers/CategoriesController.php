@@ -10,13 +10,13 @@ class CategoriesController extends Controller
 {
     public function show(Category $category, Request $request, Topic $topic)
     {
-        // 读取分类 ID 关联的话题，并按每 20 条分页
+        // 讀取分類 ID 關聯的話題，並按每 20 條分頁
         $topics = $topic->withOrder($request->order)
                         ->where('category_id', $category->id)
-                        ->with('user', 'category')   // 预加载防止 N+1 问题
+                        ->with('user', 'category')   // 預加载防止 N+1 问题
                         ->paginate(20);
 
-        // 传参变量话题和分类到模板中
+        // 傳參變量話題和分類到模板中
         return view('topics.index', compact('topics', 'category'));
     }
 }

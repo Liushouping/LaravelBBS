@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', isset($category) ? $category->name : '话题列表')
+@section('title', isset($category) ? $category->name : '話題列表')
 
 @section('content')
 
@@ -17,21 +17,21 @@
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link {{ active_class( ! if_query('order', 'recent')) }}" href="{{ Request::url() }}?order=default">
-              最后回复
+              最後回覆
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ active_class(if_query('order', 'recent')) }}" href="{{ Request::url() }}?order=recent">
-              最新发布
+              最新發佈
             </a>
           </li>
         </ul>
       </div>
 
       <div class="card-body">
-        {{-- 话题列表 --}}
+        {{-- 話題列表 --}}
         @include('topics._topic_list', ['topics' => $topics])
-        {{-- 分页 --}}
+        {{-- 分頁 --}}
         <div class="mt-5">
           {!! $topics->appends(Request::except('page'))->render() !!}
         </div>

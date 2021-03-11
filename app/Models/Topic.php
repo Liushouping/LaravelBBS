@@ -24,7 +24,7 @@ class Topic extends Model
 
     public function scopeWithOrder($query, $order)
     {
-        // 不同的排序，使用不同的数据读取逻辑
+        // 不同的排序，使用不同的數據讀取邏輯
         switch ($order) {
             case 'recent':
                 $query->recent();
@@ -38,14 +38,14 @@ class Topic extends Model
 
     public function scopeRecentReplied($query)
     {
-        // 当话题有新回复时，我们将编写逻辑来更新话题模型的 reply_count 属性，
-        // 此时会自动触发框架对数据模型 updated_at 时间戳的更新
+        // 當話題有新回覆时，我們將編寫邏輯来更新話題模型的 reply_count 属性，
+        // 此时會自動觸發框架對數據模型 updated_at 時間戳的更新
         return $query->orderBy('updated_at', 'desc');
     }
 
     public function scopeRecent($query)
     {
-        // 按照创建时间排序
+        // 按照創建時間排序
         return $query->orderBy('created_at', 'desc');
     }
 
