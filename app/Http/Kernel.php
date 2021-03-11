@@ -64,4 +64,14 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        // $schedule->command('inspire')
+        //          ->hourly();
+
+        // 一小时执行一次『活跃用户』数据生成的命令
+        $schedule->command('larabbs:calculate-active-user')->hourly();
+    }
+
 }
