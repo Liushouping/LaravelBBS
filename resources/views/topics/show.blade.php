@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
-      <div class="card ">
+      <div class="card">
         <div class="card-body">
           <h1 class="text-center mt-3 mb-3">
             {{ $topic->title }}
@@ -51,7 +51,7 @@
               </a>
               <form action="{{ route('topics.destroy', $topic->id) }}" method="post"
                     style="display: inline-block;"
-                    onsubmit="return confirm('您確定要刪除吗？');">
+                    onsubmit="return confirm('您確定要刪除嗎？');">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-outline-secondary btn-sm">
@@ -63,6 +63,15 @@
 
         </div>
       </div>
+
+      {{-- 用戶回覆列表 --}}
+      <div class="card topic-reply mt-4">
+          <div class="card-body">
+              @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
+              @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+          </div>
+      </div>
+
     </div>
   </div>
 @stop
