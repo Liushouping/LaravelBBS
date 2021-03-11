@@ -24,7 +24,7 @@ class TopicObserver
         // 如 slug 字段無内容，即使用翻譯器对 title 進行翻譯
         if ( ! $topic->slug) {
 
-            // 推送任务到隊列
+            // 推送任務到隊列
             dispatch(new TranslateSlug($topic));
         }
     }

@@ -13,9 +13,12 @@ class ReplyObserver
 {
     public function created(Reply $reply)
     {
-        $reply->topic->updateReplyCount();
-        // 通知話題作者有新的評論
-        $reply->topic->user->notify(new TopicReplied($reply));
+        // 命令行運行遷移时不做這些操作！
+        if ( ! app()->runningInConsole()) {
+            $reply->topic->updateReplyCount();
+            // 通知話題作者有新的評論
+            $reply->topic->user->notify(new TopicReplied($reply));
+        }
     }
 
     public function creating(Reply $reply)

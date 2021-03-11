@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        // 一小时执行一次『活跃用户』数据生成的命令
+        // 一小時执行一次『活躍用户』數據生成的命令
         $schedule->command('larabbs:calculate-active-user')->hourly();
     }
 

@@ -36,7 +36,7 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse(Request $request, $response)
     {
-        session()->flash('success', '密码更新成功，您已成功登录！');
+        session()->flash('success', '密码更新成功，您已成功登陸！');
         return redirect($this->redirectPath());
     }
 

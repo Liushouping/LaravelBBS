@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
         // 生成數據集合
         User::factory()->count(10)->create();
 
-        // 单独处理第一個用户的數據
+        // 單獨處理第一個用户的數據
         $user = User::find(1);
         $user->name = 'Summer';
         $user->email = 'summer@example.com';

@@ -11,18 +11,18 @@ class ImageUploadHandler
 
     public function save($file, $folder, $file_prefix, $max_width = false)
     {
-        // 構建存储的文件夹规则，值如：uploads/images/avatars/201709/21/
-        // 文件夹切割能让查找效率更高。
+        // 構建存儲的文件夾規則，值如：uploads/images/avatars/201709/21/
+        // 文件夾切割能讓查找效率更高。
         $folder_name = "uploads/images/$folder/" . date("Ym/d", time());
 
-        // 文件具体存储的物理路径，`public_path()` 获取的是 `public` 文件夹的物理路径。
+        // 文件具體存儲的物理路徑，`public_path()` 獲取的是 `public` 文件夹的物理路徑。
         // 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/
         $upload_path = public_path() . '/' . $folder_name;
 
-        // 获取文件的后缀名，因圖片从剪贴板裡黏贴时后缀名為空，所以此处确保后缀一直存在
+        // 獲取文件的後缀名，因圖片從剪贴板裡黏贴時後缀名為空，所以此處確保後缀一直存在
         $extension = strtolower($file->getClientOriginalExtension()) ?: 'png';
 
-        // 拼接文件名，加前缀是為了增加辨析度，前缀可以是相关數據模型的 ID
+        // 拼接文件名，加前缀是為了增加辨析度，前缀可以是相關數據模型的 ID
         // 值如：1_1493521050_7BVc9v9ujP.png
         $filename = $file_prefix . '_' . time() . '_' . Str::random(10) . '.' . $extension;
 
@@ -31,13 +31,13 @@ class ImageUploadHandler
             return false;
         }
 
-        // 將圖片移动到我們的目标存储路径中
+        // 將圖片移動到我們的目标存儲路徑中
         $file->move($upload_path, $filename);
 
         // 如果限制了圖片寬度，就進行裁剪
         if ($max_width && $extension != 'gif') {
 
-            // 此類中封装的函数，用于裁剪圖片
+            // 此類中封装的函數，用於裁剪圖片
             $this->reduceSize($upload_path . '/' . $filename, $max_width);
         }
 
@@ -48,20 +48,20 @@ class ImageUploadHandler
 
     public function reduceSize($file_path, $max_width)
     {
-        // 先实例化，傳參是文件的磁盘物理路径
+        // 先實例化，傳參是文件的磁盤物理路徑
         $image = Image::make($file_path);
 
-        // 進行大小调整的操作
+        // 進行大小調整的操作
         $image->resize($max_width, null, function ($constraint) {
 
             // 设定寬度是 $max_width，高度等比例缩放
             $constraint->aspectRatio();
 
-            // 防止裁图时圖片尺寸变大
+            // 防止裁图時圖片尺寸變大
             $constraint->upsize();
         });
 
-        // 對圖片修改后進行儲存
+        // 對圖片修改後進行儲存
         $image->save();
     }
 }

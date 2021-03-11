@@ -14,14 +14,12 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 /* universal */
-
 body {
   font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
   font-size: 14px;
 }
 
 /* header */
-
 .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #fff;
@@ -38,20 +36,22 @@ html {
     min-height: 100%;
   }
   
-  body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-  }
+body {
+
+/* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
   
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    background-color: #000;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   
-    .container {
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
+  
+    .container {  
       padding-right: 15px;
       padding-left: 15px;
   
@@ -62,9 +62,10 @@ html {
         a {
           color: inherit;
         }
+
       }
     }
-  }
+}
 
   /* User register page */
 .register-page {
@@ -113,17 +114,16 @@ html {
 
 }
 
-  /* Add container and footer space */
-  #app > div.container {
-    margin-bottom: 100px;
-  }
+/* Add container and footer space */
+#app > div.container {
+  margin-bottom: 100px;
+}
 
-  .simditor-body img {
-    max-width:100%;
-  }
+.simditor-body img {
+  max-width:100%;
+}
 
-  /* Topic Show Page */
-
+/* Topic Show Page */
 @import "topic_body";
 
 .topics-show-page {
@@ -137,6 +137,7 @@ html {
             line-height: 38px;
         }
     }
+    
 }
 
 /* 回覆列表 */

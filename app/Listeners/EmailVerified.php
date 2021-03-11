@@ -26,7 +26,7 @@ class EmailVerified
      */
     public function handle(Verified $event)
     {
-        // 會話裡閃存認證成功后的消息提醒
+        // 會話裡閃存認證成功後的消息提醒
         session()->flash('success', '信箱驗證成功 ^_^');
     }
 }

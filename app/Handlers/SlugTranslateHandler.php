@@ -9,7 +9,7 @@ class SlugTranslateHandler
 {
     public function translate($text)
     {
-        // 实例化 HTTP 客户端
+        // 實例化 HTTP 客户端
         $http = new Client;
 
         // 初始化配置信息
@@ -23,12 +23,12 @@ class SlugTranslateHandler
             return $this->pinyin($text);
         }
 
-        // 根据文档，生成 sign
+        // 根據文档，生成 sign
         // http://api.fanyi.baidu.com/api/trans/product/apidoc
-        // appid+q+salt+密钥 的MD5值
+        // appid+q+salt+密鑰 的MD5值
         $sign = md5($appid. $text . $salt . $key);
 
-        // 構建請求参数
+        // 構建請求參數
         $query = http_build_query([
             "q"     =>  $text,
             "from"  => "zh",
@@ -38,7 +38,7 @@ class SlugTranslateHandler
             "sign"  => $sign,
         ]);
 
-        // 发送 HTTP Get 請求
+        // 發送 HTTP Get 請求
         $response = $http->get($api.$query);
 
         $result = json_decode($response->getBody(), true);
@@ -47,11 +47,11 @@ class SlugTranslateHandler
 
         **/
 
-        // 尝试获取获取翻譯结果
+        // 嘗試獲取獲取翻譯结果
         if (isset($result['trans_result'][0]['dst'])) {
             return \Str::slug($result['trans_result'][0]['dst']);
         } else {
-            // 如果百度翻譯没有结果，使用拼音作為后备计划。
+            // 如果百度翻譯没有结果，使用拼音作為後備計畫。
             return $this->pinyin($text);
         }
     }

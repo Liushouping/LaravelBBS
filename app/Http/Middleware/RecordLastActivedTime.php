@@ -9,9 +9,9 @@ class RecordLastActivedTime
 {
     public function handle($request, Closure $next)
     {
-        // 如果是登录用户的话
+        // 如果是登陸用户的话
         if (Auth::check()) {
-            // 记录最后登录时间
+            // 紀錄最後登陸時間
             Auth::user()->recordLastActivedAt();
         }
 
