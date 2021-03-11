@@ -10,6 +10,7 @@ use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
+use App\Models\Link;
 
 class TopicsController extends Controller
 {
@@ -34,7 +35,7 @@ class TopicsController extends Controller
 
         return view('topics.index', compact('topics', 'active_users', 'links'));
     }
-    
+
     public function show(Request $request, Topic $topic)
     {
         // URL 矯正

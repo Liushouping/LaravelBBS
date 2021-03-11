@@ -14,8 +14,12 @@
         <p>{{ $user->introduction }}</p>
         
         <hr>
-        <h5><strong>注册于</strong></h5>
+        <h5><strong>註冊於</strong></h5>
         <p>{{ $user->created_at->diffForHumans() }}</p>
+
+        <hr>
+        <h5><strong>最後活躍</strong></h5>
+        <p title="{{  $user->last_actived_at }}">{{ $user->last_actived_at->diffForHumans() }}</p>
       </div>
     </div>
   </div>
@@ -38,7 +42,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'replies')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">
-              Ta 的回复
+              Ta 的回覆
             </a>
           </li>
         </ul>
